@@ -1,91 +1,68 @@
-import Image from 'next/image'
-import { Inter } from '@next/font/google'
-import styles from './page.module.css'
+"use client";
+import { template } from "@/constants";
+import React, { useEffect, useCallback, useState } from "react";
+import styles from "./page.module.css";
+import particlesConfig from "@/config/particlesjs-config.json";
+import Particles from "react-particles";
+import { loadFull } from "tsparticles";
+import { About, Contact, HyperText, Projects } from "@/components";
 
-const inter = Inter({ subsets: ['latin'] })
+const Home = () => {
+  useEffect(() => {
+    const handleScroll = () => {
+      // console.log(window.scrollY);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
-export default function Home() {
+  const particlesInit = useCallback(async (engine) => {
+    await loadFull(engine);
+  }, []);
+
+  const particlesLoaded = useCallback(async (container) => {
+    // await console.log(container);
+  }, []);
   return (
-    <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>app/page.js</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
+    <main className="flex flex-col">
+      <section
+        id="welcome-section"
+        className="h-screen flex flex-col items-start bg-white"
+      >
+        <div
+          id="particle-container"
+          className="w-full h-full flex flex-col items-center md:justify-center justify-center bg-[#141414]"
+        >
+          <Particles
+            id="tsparticles"
+            className="h-full w-full absolute"
+            init={particlesInit}
+            // loaded={particlesLoaded}
+            options={particlesConfig}
+          />
+          <h1 className="text-4xl text-left md:text-6xl font-bold font-mplus-code text-[#B8DDDF] ml-10 z-[1] leading-10 animate-fade-in">
+            Hi! I am{" "}
+            <a href="#about">
+              <span className="text-[#2A9F9B]">TADA</span>
+            </a>
+            <br />I am intended to be a{" "}
+            <HyperText
+              className="bg-white text-[#2A9F9B] cursor-pointer"
+              text="front-end"
+              toText="full-stack"
+            />{" "}
+            developer
+          </h1>
         </div>
-      </div>
-
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-        <div className={styles.thirteen}>
-          <Image src="/thirteen.svg" alt="13" width={40} height={31} priority />
-        </div>
-      </div>
-
-      <div className={styles.grid}>
-        <a
-          href="https://beta.nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={inter.className}>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p className={inter.className}>
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={inter.className}>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p className={inter.className}>Explore the Next.js 13 playground.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={inter.className}>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p className={inter.className}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
+        {/* <div className="wave wave-layer h-[20%]"></div> */}
+      </section>
+      <About />
+      <Projects />
+      <Contact />
     </main>
-  )
-}
+  );
+};
+
+export default Home;

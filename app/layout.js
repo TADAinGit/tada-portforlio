@@ -1,14 +1,19 @@
-import './globals.css'
+import { Footer, Header, ScrollTopButton } from "@/components";
+import "./globals.css";
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      {/*
-        <head /> will contain the components returned by the nearest parent
-        head.js. Find out more at https://beta.nextjs.org/docs/api-reference/file-conventions/head
-      */}
       <head />
-      <body>{children}</body>
+      <body className="mx-auto">
+        {/* <div className="containter">
+          
+        </div> */}
+        <Header />
+        {children}
+        <Footer />
+        <ScrollTopButton />
+      </body>
     </html>
-  )
+  );
 }
