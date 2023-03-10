@@ -12,7 +12,7 @@ const Header = () => {
       setHeaderColor(
         document.documentElement.scrollTop + 80 >=
           document.querySelector("#about").offsetTop
-          ? "bg-[#141414] "
+          ? "bg-[#141414]"
           : "bg-inherit"
       );
 
@@ -20,7 +20,7 @@ const Header = () => {
         "headerBackgroundColor",
         document.documentElement.scrollTop + 80 >=
           document.querySelector("#about").offsetTop
-          ? "bg-[#141414] "
+          ? "bg-[#141414]"
           : "bg-inherit"
       );
     };
@@ -38,9 +38,9 @@ const Header = () => {
   return (
     <header
       id="header"
-      className={`flex flex-col justify-center w-full px-2 py-4 fixed top-0 transition-all duration-200 ${headerColor} z-50`}
+      className={`flex flex-col justify-center w-full fixed top-0 transition-all duration-200 ${headerColor} backdrop-blur shadow z-50`}
     >
-      <nav className="flex items-center justify-between gap-2 px-3 space-y-2">
+      <nav className="flex items-center justify-between gap-2 px-4 space-y-2 my-4">
         <div className="font-jersey-sharp text-3xl">
           <Link href={"/"}>
             <HyperText

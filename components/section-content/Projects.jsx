@@ -8,18 +8,18 @@ const Projects = () => {
   return (
     <section
       id="projects"
-      className="flex items-center justify-center my-16 py-10"
+      className="flex items-start justify-center py-20 bg-black"
     >
-      <div className="w-full h-screen flex justify-center items-center mt-16 pb-14">
+      <div className="w-full flex justify-center items-center py-5">
         <div
           className={`w-full h-full transition-all duration-500 ${
             showProjectDetail ? "md:w-[65%] w-0" : "w-full"
           }`}
         >
-          <div className="w-full h-full flex items-center justify-center bg-[#ffffff]">
+          <div className="w-full h-full flex items-center justify-center ">
             <div
               id="cards"
-              className="h-full grid grid-cols-1 md:grid-cols-2 gap-5 overflow-y-scroll px-4 my-10"
+              className="h-full grid grid-cols-1 md:grid-cols-2 gap-5"
             >
               {[...Array(6)].map((_, i) => (
                 <HyperCard

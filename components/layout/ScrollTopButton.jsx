@@ -27,7 +27,7 @@ const ScrollTopButton = () => {
         onClick={handleClick}
         className={`fixed bottom-5 right-5 bg-[#141414]  p-4 rounded-full ${
           showButton ? "opacity-100" : "opacity-0 cursor-default"
-        } transition-all duration-200 shadow-lg`}
+        } transition-all duration-200 shadow-lg hover:rotate-[360deg] hover:duration-700`}
       >
         <span className="text-2xl font-bold text-[#2A9F9B]">
           <IoIosArrowUp />
